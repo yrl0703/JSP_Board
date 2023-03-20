@@ -10,7 +10,7 @@
   	<servlet-class>controller.ControllerAction</servlet-class>
   	<init-param>
   		<param-name>propertyConfig</param-name>
-  		<param-value>C:/KICCAMPUS/4.jsp/sou/KIC4_Project3/src/main/webapp/WEB-INF/commandPro.properties</param-value>
+  		<param-value>C:/Users/YURIEL/git/repository2/KIC4_Project3/src/main/webapp/WEB-INF/commandPro.properties</param-value>
   	</init-param>
   </servlet>
   
