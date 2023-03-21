@@ -24,6 +24,7 @@ public class Y_BoardDAO {
 		}
 	}
 	
+	//------------------------------------- 메서드 -----------------------------------------
 	//매니저인지 확인하는 메서드
 	public int checkManager() {
 		int x=0;
@@ -66,50 +67,23 @@ public class Y_BoardDAO {
 	
 	
 	//로그인이 되었는지를 체크해주는 메서드(마이페이지 출력여부)
-	public boolean loginCheck(String memid,String pwd){
-		boolean check = false;//로그인성공유무
-		//DB작업(select)
-	
-		try
-		{
-		  //DB접속구문
-		  con = pool.getConnection();
-		  //con.setAutoCommit(false);//시작점
-		  
-	     sql="select memid,pwd from member "+
-			        "where memid = ? and pwd = ?";
-		 pstmt = con.prepareStatement(sql);
-	     pstmt.setString(1,memid);
-		 pstmt.setString(2,pwd);
-		 rs = pstmt.executeQuery();
-	     
-		 if(rs.next()) {
-			 String sql2= "insert into memlogin values(?,?)";
-			 pstmt = con.prepareStatement(sql2);
-		     pstmt.setString(1,memid);
-		     pstmt.setString(2,pwd);
-		   //1->insert갯수,0->삽입실패
-			 int count = pstmt.executeUpdate();//insert
-		     System.out.println("count="+count);
-			 con.commit();//오라클의 경우
-			 if(count > 0){
-				 check = true;//데이터입력 성공
-			  }else {
-				  System.out.println("로그인회원 테이블에 값이 1도 안들어감");
-			  }
-		 }else {
-			 System.out.println("로그인회원 테이블 값 안들어감");
-		 }
+	public int loginCheck(String memid){
+		int x=0;//로그인 여부
+		try {
+		    con = pool.getConnection();
+		    System.out.println("con=>"+con);
+		    sql="select count(*) from memlogin";
+		    pstmt = con.prepareStatement(sql);
+		    rs = pstmt.executeQuery();
+			if(rs.next()) {//보여주는 결과가 있다면
+				x=rs.getInt(1);//1번 인덱스 값을 가져온다. 로그인 시 무조건 1개의 행이 있어야하니 정상값은 1, 2이상도 비정상
+			}
+		}catch(Exception e) {
+			System.out.println("loginCheck() 에러발생=>"+e);
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
-		catch (Exception ex)
-		{
-	      System.out.println("=loginCheck()에러=");
-		  System.out.println("==에러라인 41==");
-	      System.out.println(ex);
-		}finally{	//DB객체를 해제
-	      pool.freeConnection(con,pstmt,rs);
-		}
-	   return check;
+		return x;
 	}
 	
 	//회원테이블의 정보를 가져오는 메서드

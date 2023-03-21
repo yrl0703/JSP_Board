@@ -23,10 +23,10 @@ public class Y_myPageAction implements CommandAction {
 		x=dbPro.checkManager();
 		System.out.println("E_eventAction의 최종 x="+x);
 		
-		boolean loginCheck = dbPro.loginCheck(memid,pwd);
-		System.out.println("check=>"+loginCheck);
+		int loginCheck = dbPro.loginCheck(memid);
+		System.out.println("logincheck의 x값 확인=>"+loginCheck);
 		
-		request.setAttribute("loginCheck", new Boolean(loginCheck));
+		request.setAttribute("loginCheck", loginCheck);
 		request.setAttribute("memid", new String(memid));
 		request.setAttribute("pwd", pwd);
 		request.setAttribute("article", article);

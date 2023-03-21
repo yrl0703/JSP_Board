@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="checkManager" value="${checkManager}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,19 +17,22 @@
 </head>
 <body>
 	<jsp:include page="top.jsp" flush="false" />
+	<%--
+<c:set var="checkManager" value="${checkManager}"/>
+	<c:set var="loginCheck" value="${loginCheck}"/>
 	
-	<c:set var="loginCheck" value="${requestScope.loginCheck}"/>
-  <c:choose>
-    <c:when test="${loginCheck==true}">
-	    <c:set var="idKey" value="${requestScope.memid}" scope="session"/>
-	    <meta http-equiv="Refresh" 
-	             content="0;url=/KIC4_Project3/U_LoginPage.shop">
-	</c:when>
-	<c:otherwise>
-		<meta http-equiv="Refresh" 
-	             content="0;url=/KIC4_Project3/U_LogError.shop">
-	</c:otherwise>
-  </c:choose>
+	  <c:choose>
+	    <c:when test="${loginCheck==1}">
+		     <c:set var="idKey" value="${requestScope.memid}" scope="session"/> 
+		    <meta http-equiv="Refresh" 
+		             content="0;url=/KIC4_Project3/Y_myPage.shop">
+		</c:when>
+		<c:otherwise>
+			<meta http-equiv="Refresh" 
+		             content="0;url=/KIC4_Project3/U_LogError.shop">
+		</c:otherwise>
+	  </c:choose>
+--%>
 
 	<!-- Section Start -->
 	<section class="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
