@@ -57,7 +57,7 @@
               <div class="flex gap-4">
                 <a
                   class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
-                  href="/"
+                  href="/KIC4_Project3/Y_myPage.shop"
                 >
                   마이페이지
                 </a>

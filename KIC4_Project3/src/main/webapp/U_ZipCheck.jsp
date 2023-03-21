@@ -9,7 +9,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" src="input.js?ver=4.0"></script>
+<script language="JavaScript" src="script.js?ver=4.0"></script>
 </head>
 <body>
 	<div class="bg-blue-100 py-6 px-4">
@@ -29,7 +29,6 @@
 			    </form>
 			<div>
 			  <!-- 찾은 데이터를 보여주는 코딩(검색시작) --> 
-			  <!-- 찾은 데이터를 보여주는 코딩(검색시작) --> 
 			  <c:if test="${check eq 'n'}">
 			  	<c:if test="${zipcodeList.isEmpty()}">
 				  	<p class="text-center text-sm mt-1 -mb-2 pb-1 text-red-500">
@@ -47,25 +46,20 @@
 			  <!-- 실제 데이터를 출력하는 코딩 -->
 			  <div>
 			  <br>
-			  <%
-			  	String area3=request.getParameter("area3");
-				Vector zipcodeList = memDao.zipcodeRead(area3);
-				int totalList = zipcodeList.size();//검색갯수
-				
-			     for(int i=0;i<totalList;i++){
-				 ZipcodeDTO zipDTO = (ZipcodeDTO)zipcodeList.elementAt(i);
-				 String tempZipcode =zipDTO.getZipcode().trim();
-				 String tempArea1 = zipDTO.getArea1().trim();
-				 String tempArea2 = zipDTO.getArea2().trim();
-				 String tempArea3 = zipDTO.getArea3().trim();
-				 String tempArea4 = zipDTO.getArea4().trim();
-				  %>
-				 <a href="JavaScript:sendAddress('<%=tempZipcode%>','<%=tempArea1%>','<%=tempArea2%>','<%=tempArea3%>','<%=tempArea4%>')"
+			  <jsp:useBean id="zipcode" class="member.ZipcodeDTO" />
+			  <c:forEach var="zipcode" items="${zipcodeList}">
+				  <c:set var="tempZipcode" value="${zipcode.getZipcode().trim()}"/>
+				  <c:set var="tempArea1" value="${zipcode.getArea1().trim()}"/>
+				  <c:set var="tempArea2" value="${zipcode.getArea2().trim()}"/>
+				  <c:set var="tempArea3" value="${zipcode.getArea3().trim()}"/>
+				  <c:set var="tempArea4" value="${zipcode.getArea4().trim()}"/>
+			  
+				 <a href="JavaScript:sendAddress('${tempZipcode}','${tempArea1}','${tempArea2}','${tempArea3}','${tempArea4}')"
 				 class="font-mono hover:bg-blue-200 border-gray-300 shadow"
 				 >
-				 <%=tempZipcode%>&nbsp;<%=tempArea1%>&nbsp;<%=tempArea2%>&nbsp;<%=tempArea3%>&nbsp;
-				 <%=tempArea4%></a><br>
-			     <%}%>
+				 ${tempZipcode}&nbsp;${tempArea1}&nbsp;${tempArea2}&nbsp;${tempArea3}&nbsp;
+				 ${tempArea4}</a><br>
+			     </c:forEach>
 			     </c:if><!-- else -->
 			   </c:if><!-- if(check.equals("n")){ -->
 			 </div>

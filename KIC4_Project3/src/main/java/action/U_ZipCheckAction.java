@@ -1,6 +1,6 @@
 package action;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +21,9 @@ public class U_ZipCheckAction implements CommandAction {
 		System.out.println("check => "+check+", area3 => "+area3);
 		//검색된 데이터를 화면에 출력
 		MemberDAO memDao = new MemberDAO();
-		Vector<ZipcodeDTO> zipcodeList = memDao.zipcodeRead(area3);
-		int totalList = zipcodeList.size();//검색갯수
+		ArrayList<ZipcodeDTO> zipcodeList = memDao.zipcodeRead(area3);
 		
 		request.setAttribute("zipcodeList", zipcodeList);
-		request.setAttribute("totalList", totalList);
 		request.setAttribute("check", check);
 		
 		return "/U_ZipCheck.jsp";

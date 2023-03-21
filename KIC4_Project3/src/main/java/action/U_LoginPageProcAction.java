@@ -18,7 +18,6 @@ public class U_LoginPageProcAction implements CommandAction {
 				System.out.println("pwd=>"+pwd);//경로확인
 				MemberDAO memDao = new MemberDAO();
 				boolean loginCheck = memDao.loginCheck(memid,pwd);
-				System.out.println("check=>"+loginCheck);
 				
 				request.setAttribute("loginCheck", new Boolean(loginCheck));
 				request.setAttribute("memid", new String(memid));

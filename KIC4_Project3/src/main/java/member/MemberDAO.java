@@ -1,7 +1,10 @@
 package member;
 
-import java.sql.*;//DB작업
-import java.util.*;//Vector,Hashtable,list
+//DB작업
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class MemberDAO {
 	//pool객체를 선언
@@ -68,7 +71,7 @@ public class MemberDAO {
 		catch (Exception ex)
 		{
 	      System.out.println("=loginCheck()에러=");
-		  System.out.println("==에러라인 41==");
+		  System.out.println("==에러라인 71==");
 	      System.out.println(ex);
 		}finally{	//DB객체를 해제
 	      pool.freeConnection(con,pstmt,rs);
@@ -76,7 +79,7 @@ public class MemberDAO {
 	   return check;
 	}
 	
-	//로그인체크가 성공했다면 memlogin DB에 값을 넣고 확인해주는 메서드
+	//2.로그인체크가 성공했다면 memlogin DB에 값을 넣고 확인해주는 메서드
 		 public boolean memloginSuc(MemLoginDTO memloginDto){
 		   
 		   //DB접속
@@ -109,7 +112,7 @@ public class MemberDAO {
 			catch (Exception ex)
 			{
 		      System.out.println("=memloginSuc()에러=");
-			  System.out.println("==에러라인 93==");
+			  System.out.println("==에러라인 117==");
 		      System.out.println(ex);
 			}finally{	//DB객체를 해제
 		      pool.freeConnection(con,pstmt);
@@ -117,7 +120,7 @@ public class MemberDAO {
 		   return check;
 		 }
 	
-	    //2.중복ID를 체크하는 메서드
+	    //3.중복ID를 체크하는 메서드
 	 public boolean checkId(String memid){
 	  
 	    //DB접속
@@ -144,22 +147,21 @@ public class MemberDAO {
 		catch (Exception ex)
 		{
 	      System.out.println("=checkId()에러=");
-		  System.out.println("==에러라인 75==");
+		  System.out.println("==에러라인 152==");
 	      System.out.println(ex);
 		}finally{	//DB객체를 해제
 	      pool.freeConnection(con,pstmt,rs);
 		}
 	   return check;
 	 }
-	    //3.우편번호를 검색->회원전체를 검색(메서드)
-
-	 public Vector zipcodeRead(String area3){
+	    //4.우편번호를 검색->회원전체를 검색(메서드)
+	 public ArrayList<ZipcodeDTO> zipcodeRead(String area3){
 	  
 	  //DB접속
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-	    Vector vecList = new Vector();//담을객체
+		ArrayList<ZipcodeDTO> vecList = new ArrayList();//담을객체
 
 		try
 		{
@@ -184,14 +186,14 @@ public class MemberDAO {
 		catch (Exception ex)
 		{
 	      System.out.println("=zipcodeRead()에러=");
-		  System.out.println("==에러라인 187==");
+		  System.out.println("==에러라인 191==");
 	      System.out.println(ex);
 		}finally{	//DB객체를 해제
 	      pool.freeConnection(con,pstmt,rs);
 		}
 	   return vecList;
 	 }
-		//4.회원가입->화면에 출력(빈즈데이터)->DB
+		//5.회원가입->화면에 출력(빈즈데이터)->DB
 	 public boolean memberInsert(RegisterDTO regBean){
 	   
 	   //DB접속
@@ -235,168 +237,15 @@ public class MemberDAO {
 		catch (Exception ex)
 		{
 	      System.out.println("=memberInsert()에러=");
-		  System.out.println("==에러라인 238==");
+		  System.out.println("==에러라인 242==");
 	      System.out.println(ex);
 		}finally{	//DB객체를 해제
 	      pool.freeConnection(con,pstmt);
 		}
 	   return check;
 	 }
-		//5.회원정보를 출력(id에 해당)->select
-	  //1건->RegisterDTO, 많은수->Vector,list
-
-	public RegisterDTO getMember(String memid){
-
-	    //DB접속
-		Connection con = null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-
-		//1건의 데이터만 담을 객체선언
-	    RegisterDTO regBean = null;
-
-		try
-		{
-		  //DB접속구문
-		  con = pool.getConnection();
-		  String sql="select * from member where memid = ?";
-	      pstmt = con.prepareStatement(sql);
-		  pstmt.setString(1,memid);
-		  rs = pstmt.executeQuery();
-		  
-		  //검색한 데이터를 찾아서 벡터에 담는코딩
-		   if(rs.next()){//찾은 데이터가 있다면
-			   regBean = new RegisterDTO();
-			   regBean.setMemid(rs.getString("memid"));
-			   regBean.setGrade(rs.getString("grade"));
-			   regBean.setMemname(rs.getString("memname"));
-			   regBean.setBirthday(rs.getString("birthday"));
-			   regBean.setEmail(rs.getString("email"));
-			   regBean.setMphone(rs.getString("mphone"));
-			   regBean.setNickname(rs.getString("nickname"));
-			   regBean.setEnrolldate(rs.getTimestamp("enrolldate"));
-			   regBean.setPwd(rs.getString("pwd"));
-			   regBean.setPwd(rs.getString("zipcode"));
-			   regBean.setAddr(rs.getString("addr"));
-		   }
-		}
-		catch (Exception ex)
-		{
-	      System.out.println("=getMember()에러=");
-		  System.out.println("==에러라인 286==");
-	      System.out.println(ex);
-		}finally{	//DB객체를 해제
-	      pool.freeConnection(con,pstmt,rs);
-		}
-	   return regBean;
-	  }
-		//6.회원수정->insert구문와 비슷
-	  public boolean memberUpdate
-		                (RegisterDTO regBean){
-	    //DB접속
-		Connection con = null;
-		PreparedStatement pstmt=null;    
-		boolean flag = false;//회원수정성공유무
-
-		try
-		{
-		  //DB접속구문
-		  con = pool.getConnection();
-		  //트랜잭션처리
-		  con.setAutoCommit(false);//DB작업의시작
-
-	     String sql="update member set memname =?, "+
-			      "birthday = ?,email = ?,mphone = ?, "+
-	              "nickname = ?,pwd = ?, addr = ? where memid = ?";
-	     /* 제외
-	      * address = ?
-	     pstmt.setString(8,regBean.getGrade());        //등급
-	     pstmt.setString(9,regBean.getEnrolldate());  //회원가입일
-		 pstmt.setString(10,regBean.getDeletedate()); //회원탈퇴일
-	     pstmt.setString(11,regBean.getDelflag());     //회원탈퇴여부
-	      */
-	     
-		 pstmt = con.prepareStatement(sql);
-		 pstmt.setString(1,regBean.getMemname());
-		 pstmt.setString(2,regBean.getBirthday());
-		 pstmt.setString(3,regBean.getEmail());
-		 pstmt.setString(4,regBean.getMphone());
-		 pstmt.setString(5,regBean.getNickname());
-	     pstmt.setString(6,regBean.getPwd());
-	     pstmt.setString(7,regBean.getAddr());
-	     pstmt.setString(8,regBean.getMemid()); //12
-	     
-
-		 //1->update갯수,0->수정실패
-		 int upcheck = pstmt.executeUpdate();//update
-	     System.out.println("upcheck="+upcheck);
-		 con.commit();//오라클의 경우
-
-		 if(upcheck ==1){
-			 flag = true;//데이터수정 성공
-		  }
-		}
-		catch (Exception ex)
-		{
-	      System.out.println("=memberUpdate()에러=");
-		  System.out.println("==에러라인 254==");
-	      System.out.println(ex);
-		}finally{	//DB객체를 해제
-	      pool.freeConnection(con,pstmt);
-		}
-	    return flag;
-	  }
-		//7.회원탈퇴->memid,pwd->select->delete
-	  public int deleteMember(String memid,
-		                      String pwd){
-	   //DB접속
-		Connection con = null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-	    String dbpasswd="";//테이블에 저장된 암호
-		int x = -1;//회원삭제유무
-		//DB작업(select)
-
-		try
-		{
-		  //DB접속구문
-		  con = pool.getConnection();
-		  con.setAutoCommit(false);//시작점
-
-	      String sql="select pwd from member "+
-			         " where memid = ?";
-	      pstmt = con.prepareStatement(sql);
-		  pstmt.setString(1,memid);
-		  rs = pstmt.executeQuery();
-		  
-	       if(rs.next()){ //id에 해당하는 암호존재
-	         dbpasswd = rs.getString("pwd");
-	           //테이블의 암호==웹상의 암호
-			   if(dbpasswd.equals(pwd)){
-		String sql2="delete from member where memid = ?";
-	      pstmt=con.prepareStatement(sql2);
-		  pstmt.setString(1,memid);
-		  int delete = pstmt.executeUpdate();
-		  con.commit();
-	      System.out.println("삭제유무="+delete);
-		           x=1;//회원탈퇴성공
-			   }else{
-	               x=0;//비밀번호가 틀림
-			   }//else
-		   }//if(rs.next())
-		}//try
-		catch (Exception ex)
-		{
-	      System.out.println("=deleteMember()에러=");
-		  System.out.println("==에러라인 302==");
-	      System.out.println(ex);
-		}finally{	//DB객체를 해제
-	      pool.freeConnection(con,pstmt,rs);
-		}
-	   return x;
-	  }
 	  
-	//회원로그인 데이터 삭제->memid, pwd->delete
+	//6.회원로그인 데이터 삭제->memid, pwd->delete
 	  public boolean deleteMemLogin(String memid){
 	   //DB접속
 		Connection con = null;
@@ -425,17 +274,124 @@ public class MemberDAO {
 		catch (Exception ex)
 		{
 	      System.out.println("=deleteMemLogin()에러=");
-		  System.out.println("==에러라인 412==");
+		  System.out.println("==에러라인 279==");
 	      System.out.println(ex);
 		}finally{	//DB객체를 해제
 	      pool.freeConnection(con,pstmt);
 		}
 	   return Logout;
 	  }
+	  
+	  //7.아이디 찾기
+	  public ArrayList<RegisterDTO> searchId(String memname,String email){
+		  
+		  //DB접속
+			Connection con = null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			ArrayList<RegisterDTO> idList = new ArrayList();//담을객체
+
+			try
+			{
+			  //DB접속구문
+			  con = pool.getConnection();
+		      String sql="select memid,enrolldate from member where memname=? and email=?";
+		      pstmt = con.prepareStatement(sql);
+		      pstmt.setString(1,memname);
+		      pstmt.setString(2,email);
+			  rs = pstmt.executeQuery();
+			  
+			  //검색한 데이터를 찾아서 벡터에 담는코딩
+			   while(rs.next()){//찾은 데이터가 있다면
+				RegisterDTO regDTO = new RegisterDTO();
+				regDTO.setMemid(rs.getString("memid"));
+				regDTO.setEnrolldate(rs.getTimestamp("enrolldate"));
+				
+				//idList에 담기->화면에 출력하기위해
+				idList.add(regDTO);
+			   }
+			}
+			catch (Exception ex)
+			{
+		      System.out.println("=searchId()에러=");
+			  System.out.println("==에러라인 317==");
+		      System.out.println(ex);
+			}finally{	//DB객체를 해제
+		      pool.freeConnection(con,pstmt,rs);
+			}
+		   return idList;
+		 }
+	  
+	  	//8.비밀번호 찾기
+	  	//memid로 검색해서 memid와 email을 꺼내온다.
+	  	public RegisterDTO searchPwd(String memid){
+		    //DB접속
+			Connection con = null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			RegisterDTO regDto = null;
+
+			try
+			{
+			  //DB접속구문
+			  con = pool.getConnection();
+			  String sql="select memid,memname,email from member where memid = ?";
+		      pstmt = con.prepareStatement(sql);
+			  pstmt.setString(1,memid);
+			  rs = pstmt.executeQuery();
+			  
+			  //검색한 데이터를 찾아서 DTO에 담는코딩
+			   if(rs.next()){//찾은 데이터가 있다면
+				   regDto = new RegisterDTO();
+				   regDto.setMemid(rs.getString("memid"));
+				   regDto.setMemname(rs.getString("memname"));
+				   regDto.setEmail(rs.getString("email"));
+			   }
+			}
+			catch (Exception ex)
+			{
+		      System.out.println("=getMember()에러=");
+			  System.out.println("==에러라인 358==");
+		      System.out.println(ex);
+			}finally{	//DB객체를 해제
+		      pool.freeConnection(con,pstmt,rs);
+			}
+		   return regDto;
+		  }
+	  
+	  	//9.비밀번호 변경(Update)
+		public boolean pwdSearchUpdate(String memid,String pwd) {
+			Connection con = null;
+			PreparedStatement pstmt=null;
+		    boolean check=false;//비밀번호 수정 성공유무
+		    
+			try {
+				con=pool.getConnection();
+				con.setAutoCommit(false);
+				String sql="update member set pwd=? where memid=?";
+
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1,pwd);
+				pstmt.setString(2,memid);
+				
+				int update = pstmt.executeUpdate();//반환값 1 (성공), 0 (실패)
+				con.commit();//메모리를 테이블에 반영된다.
+				System.out.println("update(데이터 수정 유무) => "+update);
+				if(update>0) {
+					check=true; 
+				}
+			}catch(Exception e){
+			      System.out.println("=pwdSearchUpdate()에러=");
+				  System.out.println("==에러라인 385==");
+			}finally {
+				pool.freeConnection(con, pstmt); 
+			}
+			return check;
+		}
+		
 	  //관리자->전체회원을 모두 열람(검색)
 	  
 	  
-	  //이메일 체크
 	  
 	  
 	  

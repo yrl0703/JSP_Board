@@ -1,0 +1,37 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.MemberDAO;
+import member.Y_BoardDAO;
+import member.Y_BoardDTO;
+
+//요청받아서 처리해주는 클래스(액션클래스)->실행결과->컨트롤러->jsp
+public class Y_myPageAction implements CommandAction {
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		// 로그인하면서 session에 저장한 데이터
+		String memid=request.getParameter("memid");
+		String pwd=request.getParameter("pwd");
+		System.out.println("mypageAction의 값확인=>memid="+memid+", pwd=>"+pwd);
+		Y_BoardDAO dbPro=new Y_BoardDAO();
+		Y_BoardDTO article=dbPro.getMemberInfo(memid);
+		
+		int x=0;
+		//매니저인지 체크하는 부분
+		x=dbPro.checkManager();
+		System.out.println("E_eventAction의 최종 x="+x);
+		
+		boolean loginCheck = dbPro.loginCheck(memid,pwd);
+		System.out.println("check=>"+loginCheck);
+		
+		request.setAttribute("loginCheck", new Boolean(loginCheck));
+		request.setAttribute("memid", new String(memid));
+		request.setAttribute("pwd", pwd);
+		request.setAttribute("article", article);
+		request.setAttribute("checkManager", x);
+		
+		return "/Y_myPage.jsp";
+	}
+}
