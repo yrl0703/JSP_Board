@@ -13,22 +13,18 @@ public class Y_myPageAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 로그인하면서 session에 저장한 데이터
 		String memid=request.getParameter("memid");
-		String pwd=request.getParameter("pwd");
-		System.out.println("mypageAction의 값확인=>memid="+memid+", pwd=>"+pwd);
+		System.out.println("mypageAction의 값확인=>memid="+memid);
 		Y_BoardDAO dbPro=new Y_BoardDAO();
 		Y_BoardDTO article=dbPro.getMemberInfo(memid);
 		
 		int x=0;
 		//매니저인지 체크하는 부분
 		x=dbPro.checkManager();
-		System.out.println("E_eventAction의 최종 x="+x);
-		
 		int loginCheck = dbPro.loginCheck(memid);
-		System.out.println("logincheck의 x값 확인=>"+loginCheck);
+		System.out.println("logincheck의 값 확인=>"+loginCheck);
 		
 		request.setAttribute("loginCheck", loginCheck);
 		request.setAttribute("memid", new String(memid));
-		request.setAttribute("pwd", pwd);
 		request.setAttribute("article", article);
 		request.setAttribute("checkManager", x);
 		

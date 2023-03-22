@@ -12,6 +12,7 @@
   <script language="JavaScript" src="script.js?ver=2.0"></script>
 </head>
 <body>
+<jsp:include page="top.jsp" flush="false" />
 <!-- ====로그인 섹션(전체)==== -->
 <section class="bg-[#F4F7FF] py-20 my-auto">
   <div class="container mx-auto">

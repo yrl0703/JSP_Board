@@ -18,6 +18,7 @@
 <body>
 	<jsp:include page="top.jsp" flush="false" />
 	<%--
+	<c:set var="memid" value="${requestScope.memid}" scope="session"/>
 <c:set var="checkManager" value="${checkManager}"/>
 	<c:set var="loginCheck" value="${loginCheck}"/>
 	
