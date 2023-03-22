@@ -18,7 +18,6 @@
 <body>
 	<jsp:include page="top.jsp" flush="false" />
 	<%--
-	<c:set var="memid" value="${requestScope.memid}" scope="session"/>
 <c:set var="checkManager" value="${checkManager}"/>
 	<c:set var="loginCheck" value="${loginCheck}"/>
 	
@@ -45,7 +44,7 @@
 	            내 정보
 	        </span>
 	          <p class="text-body-color text-base mt-3">
-	            고객님은 골드등급입니다.            
+	            고객님은 __등급입니다.            
 	          </p>
 	          <p>3번 더 주문 시 VIP 등급입니다.</p>
 	        </div>
