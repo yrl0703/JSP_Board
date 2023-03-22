@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.Y_BoardDAO,javax.servlet.http.HttpSession"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="dbPro" class="member.Y_BoardDAO" />
+<%
+String  memid=(String)session.getAttribute("memid");
+int logincheck=dbPro.loginCheck(memid);
+System.out.println("memid => "+memid+", logincheck=>"+logincheck);
+
+
+%>
     <header aria-label="Site Header" class="bg-white sticky shadow-sm top-0 z-10  backdrop-blur-sm	bg-white/90">
         <div
           class="mx-auto flex h-16 max-w-screen-2xl items-center gap-8 sm:px-6 lg:px-40"
@@ -59,21 +67,24 @@
                 </a>
       
                 <!-- memlogin 정보가 없을 때 -->
-	    	    <c:if test="">
-	    	    </c:if>
+	    	    <c:if test="${logincheck==0}">
                 <a
                 class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
                   href="/KIC4_Project3/U_LoginPage.shop"
                 >
                   로그인
                 </a>
-<!-- memlogin 정보가 있을 때
+	    	    </c:if>
+	    	    
+				<!-- memlogin 정보가 있을 때  -->
+				<c:if test="${logincheck==1}">
                 <a
 				class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
 				href="/KIC4_Project3/U_LogoutPage.shop" >
                   로그아웃
   				 </a>
-  				   -->
+  				 </c:if>
+  				 
   				   
                 <a href="#" class="block py-3 px-2 hover:border-red-700">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">

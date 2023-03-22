@@ -389,6 +389,41 @@ public class MemberDAO {
 			return check;
 		}
 		
+		//혹시모를 초기화 - 회원로그인 데이터 삭제
+		  public boolean loginReset(){
+		   //DB접속
+			Connection con = null;
+			PreparedStatement pstmt=null;
+			boolean Reset = false;//회원삭제유무
+			//DB작업(select)
+
+			try
+			{
+			  //DB접속구문
+			  con = pool.getConnection();
+			  con.setAutoCommit(false);//시작점
+
+		      String sql="delete from memlogin";
+		      pstmt = con.prepareStatement(sql);
+			//1->logout 했다. ,0 -> logout실패
+			 int LogCheck = pstmt.executeUpdate();//update
+		     System.out.println("LogoutCheck="+LogCheck);
+			 con.commit();//오라클의 경우
+
+			 if(LogCheck ==1){
+				 Reset = true;//데이터수정 성공
+			  }
+			}
+			catch (Exception ex)
+			{
+		      System.out.println("=loginReset()에러=");
+			  System.out.println("==에러라인 467==");
+		      System.out.println(ex);
+			}finally{	//DB객체를 해제
+		      pool.freeConnection(con,pstmt);
+			}
+		   return Reset;
+		  }
 	  //관리자->전체회원을 모두 열람(검색)
 	  
 	  

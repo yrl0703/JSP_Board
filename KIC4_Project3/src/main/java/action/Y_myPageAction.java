@@ -3,7 +3,6 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
 import member.Y_BoardDAO;
 import member.Y_BoardDTO;
 
@@ -23,8 +22,9 @@ public class Y_myPageAction implements CommandAction {
 		int loginCheck = dbPro.loginCheck(memid);
 		System.out.println("logincheck의 값 확인=>"+loginCheck);
 		
+		//session.setAttribute("idKey",memid);
 		request.setAttribute("loginCheck", loginCheck);
-		request.setAttribute("memid", new String(memid));
+		request.setAttribute("memid", memid);
 		request.setAttribute("article", article);
 		request.setAttribute("checkManager", x);
 		

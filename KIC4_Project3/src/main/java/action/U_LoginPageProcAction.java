@@ -2,8 +2,8 @@ package action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import member.MemLoginDTO;
 import member.MemberDAO;
 
 public class U_LoginPageProcAction implements CommandAction {
