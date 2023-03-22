@@ -73,9 +73,9 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
                 >
                   로그인
                 </a>
+				<!-- memlogin 정보가 있을 때  -->
 	    	    <%}else if(logincheck==1){ %>
 	    	    
-				<!-- memlogin 정보가 있을 때  -->
                 <a
 				class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
 				href="U_Logout.shop?memid=${memid}" >
