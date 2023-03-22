@@ -58,12 +58,14 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
       
             <div class="flex items-center gap-4">
               <div class="flex gap-4">
+              <%if (logincheck==1) {%>
                 <a
                   class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
                   href="/KIC4_Project3/Y_myPage.shop"
                 >
                   마이페이지
                 </a>
+                <%} %>
       
                 <!-- memlogin 정보가 없을 때 -->
 	    	    <%if (logincheck==0) {%>
