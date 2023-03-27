@@ -17,22 +17,10 @@
 </head>
 <body>
 	<jsp:include page="top.jsp" flush="false" />
+
 	<%--
-<c:set var="checkManager" value="${checkManager}"/>
-	<c:set var="loginCheck" value="${loginCheck}"/>
-	
-	  <c:choose>
-	    <c:when test="${loginCheck==1}">
-		     <c:set var="idKey" value="${requestScope.memid}" scope="session"/> 
-		    <meta http-equiv="Refresh" 
-		             content="0;url=/KIC4_Project3/Y_myPage.shop">
-		</c:when>
-		<c:otherwise>
-			<meta http-equiv="Refresh" 
-		             content="0;url=/KIC4_Project3/U_LogError.shop">
-		</c:otherwise>
-	  </c:choose>
---%>
+	<c:set var="checkManager" value="${checkManager}"/>
+	--%>
 
 	<!-- Section Start -->
 	<section class="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
@@ -44,34 +32,41 @@
 	            내 정보
 	        </span>
 	          <p class="text-body-color text-base mt-3">
-	            고객님은 __등급입니다.            
+	            <span class="text-blue-600 font-bold">${article.nickname}</span>님은 <span class="text-sky-400 font-bold">${article.grade}</span>등급입니다.            
 	          </p>
+	          <!-- 
 	          <p>3번 더 주문 시 VIP 등급입니다.</p>
+	           -->
 	        </div>
 	      </div>
 	    </div>
 	    <div class="-mx-4 flex flex-wrap">
 	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
-	        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
-	        onclick="window.location.href='javascript:void(0);'">
-	          <h4 class="text-dark mb-3 text-xl font-semibold">
-	            회원 정보
-	          </h4>
-	          <p class="text-body-color">
-	            고객님의 회원 정보를 조회, 수정할 수 있습니다.
-	          </p>
-	        </div>
+	    	<a href="/KIC4_Project3/Y_myInfo.shop" class="text-gray-900 transition hover:text-gray-500/75">
+		        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
+		        onclick="window.location.href='javascript:void(0);'">
+		          <h4 class="text-dark mb-3 text-xl font-semibold">
+		            회원 정보
+		          </h4>
+		          <p class="text-body-color">
+		            <span class="text-blue-600 font-bold">${article.nickname}</span>님의 회원 정보를 조회, 수정할 수 있습니다.
+		          </p>
+		        </div>
+	     	</a>
 	      </div>
+	      
 	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
-	        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
-	        onclick="window.location.href='Y_orderProcess.html'">
-	          <h4 class="text-dark mb-3 text-xl font-semibold">
-	            주문 처리 현황
-	          </h4>
-	          <p class="text-body-color">
-	            고객님께서 주문하신 상품의 처리 현황을 보거나 주문 취소를 할 수 있습니다.
-	          </p>
-	        </div>
+		        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
+		        onclick="window.location.href='Y_orderProcess.html'">
+		          <h4 class="text-dark mb-3 text-xl font-semibold">
+		            주문 처리 현황
+		          </h4>
+		          <p class="text-body-color">
+		            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 주문하신 상품의 처리 현황을 보거나 주문 취소를 할 수 있습니다.
+		          </p>
+		        </div>
+	      	<a href="/KIC4_Project3/Y_orderProcess.shop" class="text-gray-900 transition hover:text-gray-500/75">
+		     </a>
 	      </div>
 	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
 	        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
@@ -80,7 +75,7 @@
 	            작성 리뷰 보기
 	          </h4>
 	          <p class="text-body-color">
-	            고객님께서 작성하신 리뷰를 확인할 수 있습니다.
+	            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 작성하신 리뷰를 확인할 수 있습니다.
 	          </p>
 	        </div>
 	      </div>
@@ -91,7 +86,7 @@
 	            주문 내역 조회
 	          </h4>
 	          <p class="text-body-color">
-	            고객님께서 주문하신 상품의 주문 내역을 확인할 수 있습니다.
+	            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 주문하신 상품의 주문 내역을 확인할 수 있습니다.
 	          </p>
 	        </div>
 	      </div>

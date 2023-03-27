@@ -12,9 +12,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
 
 import member.E_BoardDAO;
-import member.E_BoardDTO;
 
 
 public class E_eventAction implements CommandAction {
@@ -23,6 +23,11 @@ public class E_eventAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
 		//1. /list.do에서 search,searchtext도 매개변수로 처리
+		/*
+		HttpSession session = request.getSession(true);
+		String  memid=(String)session.getAttribute("memid");
+		System.out.println("memid세션확인!!!!!!!!!!!!!!"+memid);
+		*/
 		String pageNum=request.getParameter("pageNum"); 
 		//추가(검색분야,검색어)
 		String search=request.getParameter("search");//검색분야  

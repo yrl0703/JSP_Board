@@ -92,7 +92,6 @@ public class Y_BoardDAO {
 		try {
 			System.out.println("Y_DAO memid값 넘오는지 확인=>"+memid);
 			con=pool.getConnection();
-			
 			sql="select * from member where memid=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, memid);
@@ -115,7 +114,6 @@ public class Y_BoardDAO {
 	//------회원테이블의 정보 set하는 메서드--------
 	private Y_BoardDTO makeMemInfoFromResult() throws Exception {//getter method
 		Y_BoardDTO article=new Y_BoardDTO();
-		
 		article.setGrade(rs.getString("grade"));
 		article.setMemname(rs.getString("memname"));
 		article.setEmail(rs.getString("email"));
@@ -123,22 +121,10 @@ public class Y_BoardDAO {
 		article.setNickname(rs.getString("nickname"));
 		article.setAddr(rs.getString("addr"));
 		article.setZipcode(rs.getString("zipcode"));
-		article.setBirthday(rs.getDate("birthday"));
+		article.setBirthday(rs.getString("birthday"));
 		article.setEnrolldate(rs.getTimestamp("enrolldate"));
 		article.setDeletedate(rs.getTimestamp("deletedate"));
 		article.setDelflag(rs.getString("delflag"));
-		
-		article.setEventno(rs.getInt("eventno"));//게시물번호
-		article.setManagerid(rs.getString("managerid"));//작성자(관리자)
-		article.setSubject(rs.getString("subject"));//제목
-		article.setContent(rs.getString("content"));//글 내용
-		article.setImg_main(rs.getString("img_main"));//글 이미지
-		article.setImgpath(rs.getString("imgpath"));//글 이미지
-		article.setImgpath2(rs.getString("imgpath2"));//글 이미지
-		article.setReadcount(rs.getInt("readcount")); //default 0
-		article.setEventdate(rs.getTimestamp("eventdate"));//작성날짜는 자동으로 계산해서 넣어준다.
-		article.setEventstart(rs.getString("eventstart"));//이벤트시작일
-		article.setEventend(rs.getString("eventend"));//이벤트종료일
 		
 		return article;
 	}

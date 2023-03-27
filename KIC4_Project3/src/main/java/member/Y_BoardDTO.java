@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Y_BoardDTO {
 	//마이페이지 멤버변수선언
 	private String grade,memname,email,mphone,nickname,addr,zipcode;
-	private Date birthday;
+	private String birthday;
 	private Timestamp enrolldate;//회원가입일 -> Date
 	private Timestamp deletedate=null;//회원탈퇴일 -> Date
 	private String delflag="N";//회원탈퇴여부
@@ -61,10 +61,10 @@ public class Y_BoardDTO {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public Timestamp getEnrolldate() {
