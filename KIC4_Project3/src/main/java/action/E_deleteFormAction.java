@@ -28,8 +28,8 @@ public class E_deleteFormAction implements CommandAction {
 		request.setAttribute("article", article);//${article.num}~
 		request.setAttribute("checkManager", x);
 		
-		return "/E_deleteForm.jsp"; // "/notice/deleteForm.jsp"
-												// "/member/deleteMember.jsp"
+		return "/E_deleteForm.jsp"; 
+												
 	}
 
 }

@@ -3,8 +3,9 @@ package member;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;//ArrayList, List사용
-import member.E_BoardDTO;
-//import member.E_memloginDTO;
+
+import member.RegisterDTO;
+import member.Y_BoardDTO;
 
 public class Y_BoardDAO {
 	//1.연결할 클래스 객체선언
@@ -90,7 +91,7 @@ public class Y_BoardDAO {
 	public Y_BoardDTO getMemberInfo(String memid) {
 		Y_BoardDTO article=null; //ArrayList<BoardDTO> article=null; (제너릭)
 		try {
-			System.out.println("Y_DAO memid값 넘오는지 확인=>"+memid);
+			System.out.println("getMemberInfo() memid값 넘오는지 확인=>"+memid);
 			con=pool.getConnection();
 			sql="select * from member where memid=?";
 			pstmt=con.prepareStatement(sql);
@@ -129,6 +130,101 @@ public class Y_BoardDAO {
 		return article;
 	}
 	
+	//memberUpdate 회원수정 메서드
+	public boolean memberUpdate(RegisterDTO regBean,String passwd, String memid) {
+		boolean check=false;//회원수정 성공유무
+		String dbpasswd="";//DB상에서 찾은 암호 저장 변수선언
+		System.out.println("memberUpdate 매개변수 확인 regBean=>"+regBean+", passwd=>"+passwd+", memid"+memid);
+		
+		try {
+			con=pool.getConnection();
+			//--트랜잭션=>오라클의 필수(p410~413)=>자동으로 commit(X)
+			con.setAutoCommit(false);//default가 true기 때문에 실수한번 할 수가 없다, 바로 데이터가 들어감
+			//------------------비밀번호 확인
+			sql="select pwd from member where memid=?";
+			pstmt=con.prepareStatement(sql);//NullPointerException
+			pstmt.setString(1, memid);//2.index~
+			rs=pstmt.executeQuery();
+			//암호를 찾았다면
+			if(rs.next()) {
+				dbpasswd=rs.getString("pwd");//rs.getString("불러올 필드명")
+				System.out.println("dbpasswd=>"+dbpasswd);
+				//dbpasswd(DB상 암호)==passwd(웹상에서 입력한 값)
+				if(dbpasswd.contentEquals(passwd)) {
+					System.out.println("if문 확인!!!!!!!!!!!!"+regBean.getMphone());
+					sql="update member set nickname=?,email=?,mphone=?,zipcode=?,addr=? where memid=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1,regBean.getNickname());
+				    pstmt.setString(2,regBean.getEmail());
+				    pstmt.setString(3,regBean.getMphone());
+				    pstmt.setString(4,regBean.getZipcode());
+				    pstmt.setString(5,regBean.getAddr());
+				    pstmt.setString(6,memid);
+			
+				    int update=pstmt.executeUpdate();//반환값 1(성공),0(실패)
+				    con.commit();//메모리->실제 테이블에 반영
+				    System.out.println("update(데이터 수정유무)=>"+update);
+				    if(update==1) {
+				    	check=true;//데이터 update 성공확인
+				    }
+			
+				}else {//암호가 틀린경우
+					check=false;//회원수정 실패
+				}
+			}	else {//암호가 존재X
+				check=false;
+			}
+			
+		}catch(Exception e) {
+			System.out.println("memberUpdate() 실행오류=>"+e);
+			
+		}finally {
+			pool.freeConnection(con, pstmt);//rs 없음 (select가 아님)
+		}
+		return check;
+	}
+	
+	//7)회원 탈퇴
+	//SQL> select passwd from member where id='nup';
+	//SQL> delete from member where id='nup';
+	public int memberDelete(String id,String passwd) {
+		String dbpasswd="";//DB상에서 찾은 암호 저장 변수선언
+		int x=-1;//회원탈퇴 유무 확인위한 변수선언
+		
+		try {
+			con=pool.getConnection();//이미 만들어진 연결객체 얻어옴
+			con.setAutoCommit(false);//트랜잭션 처리
+			//인증처리
+			sql="select passwd from member where id=?";//sql
+			pstmt=con.prepareStatement(sql);//NullPointerException
+			pstmt.setString(1, id);//2.index~
+			rs=pstmt.executeQuery();
+			//암호를 찾았다면
+			if(rs.next()) {
+				dbpasswd=rs.getString("passwd");//rs.getString("불러올 필드명")
+				System.out.println("dbpasswd=>"+dbpasswd);
+				//dbpasswd(DB상 암호)==passwd(웹상에서 입력한 값)
+				if(dbpasswd.equals(passwd)) {
+					sql="delete from member where id=?";
+					pstmt=con.prepareStatement(sql);//NullPointerException
+					pstmt.setString(1, id);
+					int delete=pstmt.executeUpdate();
+					System.out.println("delete(회원탈퇴 성공유무)=>"+delete);
+					con.commit();//트랜잭션 처리 끝
+					x=1;//회원탈퇴 성공
+				}else {//암호가 틀린경우
+					x=0;//회원탈퇴 실패
+				}
+			}	else {//암호가 존재X
+				x=-1;
+			}
+		}catch(Exception e) {
+			System.out.println("memberDelete() 실행오류=>"+e);
+		}finally {
+			pool.freeConnection(con, pstmt, rs);//검색때문에 rs객체가 필요
+		}
+		return x;
+	}
 
 
 

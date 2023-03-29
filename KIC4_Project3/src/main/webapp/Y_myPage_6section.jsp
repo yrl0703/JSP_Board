@@ -54,15 +54,39 @@
 		        </div>
 	     	</a>
 	      </div>
-
+	      
+	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
+		        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
+		        onclick="window.location.href='Y_orderProcess.html'">
+		          <h4 class="text-dark mb-3 text-xl font-semibold">
+		            주문 처리 현황
+		          </h4>
+		          <p class="text-body-color">
+		            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 주문하신 상품의 처리 현황을 보거나 주문 취소를 할 수 있습니다.
+		          </p>
+		        </div>
+	      	<a href="./Y_orderProcess.shop" class="text-gray-900 transition hover:text-gray-500/75">
+		     </a>
+	      </div>
+	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
+	        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
+	        onclick="window.location.href='./Y_writtenReview.html';">
+	          <h4 class="text-dark mb-3 text-xl font-semibold">
+	            작성 리뷰 보기
+	          </h4>
+	          <p class="text-body-color">
+	            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 작성하신 리뷰를 확인할 수 있습니다.
+	          </p>
+	        </div>
+	      </div>
 	      <div class="w-full px-4 md:w-1/2 lg:w-1/2">
 	        <div class="h-40 mb-8 rounded-[20px] bg-white p-10 shadow-md hover:shadow-lg hover:cursor-pointer md:px-7 xl:px-10 border border-blue-500"
 	        onclick="window.location.href='./Y_orderCheck.html';">
 	          <h4 class="text-dark mb-3 text-xl font-semibold">
-	            주문 내역 조회 및 주문처리 현황
+	            주문 내역 조회
 	          </h4>
 	          <p class="text-body-color">
-	            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 주문하신 상품의 주문 내역을 확인하고 처리 현황을 보거나 주문 취소를 할 수 있습니다.
+	            <span class="text-blue-600 font-bold">${article.nickname}</span>님께서 주문하신 상품의 주문 내역을 확인할 수 있습니다.
 	          </p>
 	        </div>
 	      </div>
