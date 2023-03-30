@@ -62,7 +62,7 @@
     <div class="text-center">
       <button type="button" class="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-6
       ml-1 mr-1 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 my-2" 
-      onClick="location.href='/KIC4_Project3/Y_myPage.shop'">
+      onClick="location.href='./Y_myPage.shop'">
       마이페이지로
       </button>
     </div>

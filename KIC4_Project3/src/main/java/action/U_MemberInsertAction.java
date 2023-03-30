@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
-import member.RegisterDTO;
+import member.U_MemberDAO;
+import member.U_RegisterDTO;
 
 public class U_MemberInsertAction implements CommandAction {
 
@@ -16,7 +16,7 @@ public class U_MemberInsertAction implements CommandAction {
 		//값을 입력을 받아서 MemberDTO에 저장 -> 테이블에 저장하는 구문
 		request.setCharacterEncoding("utf-8"); //한글처리
 		
-		RegisterDTO regDTO = new RegisterDTO();
+		U_RegisterDTO regDTO = new U_RegisterDTO();
 	    
 		regDTO.setMemid(request.getParameter("memid"));
 		regDTO.setGrade(request.getParameter("grade"));
@@ -30,11 +30,11 @@ public class U_MemberInsertAction implements CommandAction {
 		regDTO.setZipcode(request.getParameter("zipcode"));
 		regDTO.setAddr(request.getParameter("addr"));
 		
-		MemberDAO memDao = new MemberDAO();
+		U_MemberDAO memDao = new U_MemberDAO();
 	    boolean flag = memDao.memberInsert(regDTO);
 	    System.out.println("U_MemberInsertAction(flag)="+flag);
 	    
-	    request.setAttribute("flag", new Boolean(flag));
+	    request.setAttribute("flag",flag);
 	    
 	    return "/U_MemberInsert.jsp";
 	}

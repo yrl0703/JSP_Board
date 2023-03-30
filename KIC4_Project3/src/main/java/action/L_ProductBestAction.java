@@ -15,10 +15,10 @@ public class L_ProductBestAction implements CommandAction {
 		 List productList=null;//화면에 출력할 레코드를 저장할 변수
 		 
 		 ProductDAO pdao=new ProductDAO();
-		 productList=pdao.getProduct(1,30);
+		 productList=pdao.getBestProduct(1,20);
 
 		 request.setAttribute("productList", productList);
-		
+		 
 		return "/L_ProductBest.jsp";
 	}
 

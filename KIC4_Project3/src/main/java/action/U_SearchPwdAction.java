@@ -3,8 +3,8 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
-import member.RegisterDTO;
+import member.U_MemberDAO;
+import member.U_RegisterDTO;
 
 public class U_SearchPwdAction implements CommandAction {
 

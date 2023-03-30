@@ -3,8 +3,8 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
-import member.RegisterDTO;
+import member.U_MemberDAO;
+import member.U_RegisterDTO;
 
 public class U_SearchPwdProcAction implements CommandAction {
 
@@ -15,8 +15,8 @@ public class U_SearchPwdProcAction implements CommandAction {
 		String memid=request.getParameter("memid");
 		
 		//memid로 검색한 memid가 있다면 꺼내온 데이터를 RegisterDTO에 담는다.
-		MemberDAO memDao = new MemberDAO();
-		RegisterDTO searchPwd=memDao.searchPwd(memid);
+		U_MemberDAO memDao = new U_MemberDAO();
+		U_RegisterDTO searchPwd=memDao.searchPwd(memid);
 		
 		request.setAttribute("searchPwd", searchPwd);
 		

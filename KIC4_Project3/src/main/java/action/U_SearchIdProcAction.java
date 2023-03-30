@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
-import member.RegisterDTO;
+import member.U_MemberDAO;
+import member.U_RegisterDTO;
 import member.ZipcodeDTO;
 
 public class U_SearchIdProcAction implements CommandAction {
@@ -23,8 +23,8 @@ public class U_SearchIdProcAction implements CommandAction {
 		System.out.println("userkey=>"+userkey);
 		
 		//배열로 받은 이유는 한 사용자가 계정을 여러개 가질 수도 있기 때문이다.
-		MemberDAO memDao = new MemberDAO();
-		ArrayList<RegisterDTO> searchId = memDao.searchId(memname,email);
+		U_MemberDAO memDao = new U_MemberDAO();
+		ArrayList<U_RegisterDTO> searchId = memDao.searchId(memname,email);
 		int totalList = searchId.size();//검색갯수
 		System.out.println("searchId=>"+searchId);
 		

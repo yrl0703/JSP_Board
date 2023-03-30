@@ -17,7 +17,7 @@ public class L_ProductUpdateProAction implements CommandAction {
 		
 		pdto.setpID(Integer.parseInt(request.getParameter("pID")));
 	    pdto.setPname(request.getParameter("pname"));
-	    pdto.setAlcdegree(request.getParameter("alcdegree"));
+	    pdto.setAlcdegree(Integer.parseInt(request.getParameter("alcdegree")));
 	    pdto.setVolume(request.getParameter("volume"));
 	    pdto.setIngredient(request.getParameter("ingredient"));
 	    pdto.setPcompany(request.getParameter("pcompany"));

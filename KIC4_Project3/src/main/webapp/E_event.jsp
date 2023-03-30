@@ -54,7 +54,7 @@
     	<c:forEach var="article" items="${articleList}">
         <ul class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-1">
           <li>
-            <a href="/KIC4_Project3/E_content.shop?num=${article.eventno}&pageNum=${pgList.currentPage}" class="relative block overflow-hidden group rounded-lg"> 
+            <a href="./E_content.shop?num=${article.eventno}&pageNum=${pgList.currentPage}" class="relative block overflow-hidden group rounded-lg"> 
               <img src="img/img_event/${article.img_main}" alt=""
                 class="object-cover w-full h-64 transition duration-500 group-hover:scale-105 sm:h-64" />
             
@@ -97,7 +97,7 @@
         
         <br>
 		<c:if test="${checkManager==1}">
-        	<button type="button" onclick="location.href='/KIC4_Project3/E_writeForm.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">새 이벤트 등록하기</button>
+        	<button type="button" onclick="location.href='./E_writeForm.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">새 이벤트 등록하기</button>
         </c:if>
         <br>
         
@@ -107,18 +107,18 @@
 			  <ul class="inline-flex -space-x-px">
 			    <li>
 			  <c:if test="${pgList.startPage>pgList.blockSize}">
-			      <a href="/KIC4_Project3/E_event.shop?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">이전</a>
+			      <a href="./E_event.shop?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">이전</a>
 			  </c:if>
 			    </li>
 			  <c:forEach var="i" begin="${pgList.startPage}" end="${pgList.endPage}" >
 			    <li>
 			      <c:if test="${pgList.currentPage==i}">
-			      	<a href="/KIC4_Project3/E_event.shop?pageNum=${i}&search=${search}&searchtext=${searchtext}" aria-current="page" class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+			      	<a href="./E_event.shop?pageNum=${i}&search=${search}&searchtext=${searchtext}" aria-current="page" class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
 			        ${i}
 			        </a>
 			      </c:if>
 				  <c:if test="${pgList.currentPage!=i}">
-			      	<a href="/KIC4_Project3/E_event.shop?pageNum=${i}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+			      	<a href="./E_event.shop?pageNum=${i}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
           			${i}
 			        </a>
    				  </c:if>
@@ -127,7 +127,7 @@
 			   </c:forEach>
 			   <c:if test="${pgList.endPage<pgList.pageCount}">
 			    <li>
-			      <a href="/KIC4_Project3/E_event.shop?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">다음</a>
+			      <a href="./E_event.shop?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">다음</a>
 			    </li>
 			    </c:if>
 			  </ul>
@@ -136,7 +136,7 @@
 		
 		
 		<!-- search box -->
-	<form name="test" action="/KIC4_Project3/E_event.shop">
+	<form name="test" action="./E_event.shop">
 	
 		<div aria-label="search " >
         <div class="mx-auto max-w-screen-2xl px-4 py-3 sm:px-6 lg:px-8">

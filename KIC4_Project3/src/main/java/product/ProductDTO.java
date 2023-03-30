@@ -3,10 +3,11 @@ package product;
 public class ProductDTO {
 	
 	private int pID; //상품아이디
-	private String pname,alcdegree,volume,ingredient,pcompany,pperson,pcategory,pdesc,imgpath;
-	//상품이름,도수,규격,주원료,제조회사,상황별대상,상품종류,상품설명,이미지경로
-	private int pprice,pstock; //상품가격,상품재고
-	
+	private String pname,volume,ingredient,pcompany,pperson,pcategory,pdesc,imgpath;
+	//상품이름,규격,주원료,제조회사,상황별대상,상품종류,상품설명,이미지경로
+	private int alcdegree, pprice,pstock; //도수,상품가격,상품재고
+	private int count; //조회수
+
 	public int getpID() {
 		return pID;
 	}
@@ -19,10 +20,10 @@ public class ProductDTO {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getAlcdegree() {
+	public int getAlcdegree() {
 		return alcdegree;
 	}
-	public void setAlcdegree(String alcdegree) {
+	public void setAlcdegree(int alcdegree) {
 		this.alcdegree = alcdegree;
 	}
 	public String getVolume() {
@@ -78,6 +79,12 @@ public class ProductDTO {
 	}
 	public void setPstock(int pstock) {
 		this.pstock = pstock;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 

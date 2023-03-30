@@ -7,9 +7,8 @@
 	<TITLE> 회원가입 체크 </TITLE>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-	<script language="JavaScript" src="script.js?ver=4.0"></script>
+	<script language="JavaScript" src="U_script.js?ver=4.0"></script>
 </HEAD>
-<jsp:include page="top.jsp" flush="false"/>
  <BODY class="bg-[#F4F7FF]">
  	<section class="py-20 lg:py-[117px]">
 	  <div class="container mx-auto">
@@ -17,7 +16,7 @@
 	      <div class="w-full px-4">
 	         <div class="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]">
 	        	<div class="mb-10 text-center md:mb-16">
-		            <a href="javascript:void(0)"
+		            <a href="./M_mainpage.shop"
 		            class="mx-auto inline-block max-w-[160px]">
 			           <img src="./img/logo.png"/>
 			         </a>

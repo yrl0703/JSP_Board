@@ -6,7 +6,7 @@
   <title>로그인페이지</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-  <script language="JavaScript" src="script.js?ver=1.0"></script>
+  <script language="JavaScript" src="U_script.js?ver=1.0"></script>
  </HEAD>
  <BODY class="bg-blue-100">
     <div class="py-12 px-5">

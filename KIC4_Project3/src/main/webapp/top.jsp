@@ -13,7 +13,7 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
         <div
           class="mx-auto flex h-16 max-w-screen-2xl items-center gap-8 sm:px-6 lg:px-40"
         >
-          <a class="block text-teal-600 flex items-center" href="/KIC4_Project3/M_mainpage.shop">
+          <a class="block text-teal-600 flex items-center" href="./M_mainpage.shop">
             <span class="sr-only">Home</span>
             <svg
               class="h-1"
@@ -30,25 +30,25 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
             <nav aria-label="Site Nav" class="hidden md:block">
               <ul class="flex items-center gap-10  font-bold text-base">
                 <li>
-                  <a class="text-gray-900 transition hover:text-gray-500/75" href="/KIC4_Project3/product.shop">
+                  <a class="text-gray-900 transition hover:text-gray-500/75" href="./product.shop">
                     전체상품
                   </a>
                 </li>
       
                 <li>
-                  <a class="text-gray-900 transition hover:text-gray-500/75" href="/KIC4_Project3/productBest.shop">
+                  <a class="text-gray-900 transition hover:text-gray-500/75" href="./productBest.shop">
                     베스트
                   </a>
                 </li>
       
                 <li>
-                  <a class="text-gray-900 transition hover:text-gray-500/75" href="/KIC4_Project3/E_event.shop">
+                  <a class="text-gray-900 transition hover:text-gray-500/75" href="./E_event.shop">
                     이벤트
                   </a>
                 </li>
       
                 <li>
-                  <a class="text-gray-900 transition hover:text-gray-500/75" href="/">
+                  <a class="text-gray-900 transition hover:text-gray-500/75" href="./noticeList.shop">
                     공지사항
                   </a>
                 </li>
@@ -61,7 +61,7 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
               <%if (logincheck==1) {%>
                 <a
                   class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
-                  href="/KIC4_Project3/Y_myPage.shop"
+                  href="./Y_myPage.shop"
                 >
                   마이페이지
                 </a>
@@ -71,7 +71,7 @@ System.out.println("memid => "+memid+", logincheck=>"+logincheck);
 	    	    <%if (logincheck==0) {%>
                 <a
                 class="block px-1 py-2.5 text-sm font-medium text-gray-700 transition hover:text-gray-500"
-                  href="/KIC4_Project3/U_LoginPage.shop"
+                  href="./U_LoginPage.shop"
                 >
                   로그인
                 </a>

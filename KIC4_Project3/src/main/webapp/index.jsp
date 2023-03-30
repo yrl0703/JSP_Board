@@ -4,5 +4,5 @@
 boolean loginReset = memDao.loginReset();
 System.out.println("초기화=>"+loginReset);
 
-response.sendRedirect(request.getContextPath()+"/M_mainpage.shop");
+response.sendRedirect(request.getContextPath()+"/E_event.shop");
 %>

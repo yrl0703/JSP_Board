@@ -4,7 +4,7 @@
 <title>회원가입 확인</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-<script language="JavaScript" src="script.js?ver=3.1"></script>
+<script language="JavaScript" src="U_script.js?ver=3.1"></script>
 </head>
 <body>
   <div class="mt-10 sm:mt-0">
@@ -72,7 +72,6 @@
 	                    <!-- 히든(아이디, 회원가입일, 등급)-->
 	                    <input type="hidden" name="pwd" value="${regDTO.pwd}">
 	                    <input type="hidden" name="enrolldate" value="${regDTO.enrolldate}">
-	                    <input type="hidden" name="grade" value="${regDTO.grade}">
 	                  </div>
 	                  
 	                  <!-- 확인완료/다시쓰기 -->

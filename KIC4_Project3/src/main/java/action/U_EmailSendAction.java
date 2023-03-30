@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mail.Gmail;
-import member.RegisterDTO;
+import member.U_RegisterDTO;
 
 public class U_EmailSendAction implements CommandAction {
 
@@ -25,7 +25,7 @@ public class U_EmailSendAction implements CommandAction {
 			request.setCharacterEncoding("utf-8");
 			//MemberDAO userDAO = new MemberDAO();
 			//String memid=request.getParameter("memid");
-			RegisterDTO regDTO=new RegisterDTO();
+			U_RegisterDTO regDTO=new U_RegisterDTO();
 			String email=request.getParameter("email");
 			String memname=request.getParameter("memname");
 			//String testid="khg97221@gmail.com";

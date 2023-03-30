@@ -23,7 +23,7 @@
     
         <h2 class="mt-4 text-lg font-large text-gray-900">이벤트글 수정</h3>
         <br>
-	    <form method="post" name="writeform" action="/KIC4_Project3/E_updateProc.shop" onsubmit="return writeSave()">
+	    <form method="post" name="writeform" action="./E_updateProc.shop" onsubmit="return writeSave()">
 		    <!-- 입력하지 않고 매개변수로 전달해서 테이블에 저장(hidden) 페이징처리를 위함 -->
 			<input type="hidden" name="num" value="${article.eventno}">
 			<input type="hidden" name="pageNum" value="${pageNum}">
@@ -99,7 +99,7 @@
 				    <br>
 				    
 			
-		        	<button type="button" onclick="location.href='/KIC4_Project3/E_event.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-left">
+		        	<button type="button" onclick="location.href='./E_event.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-left">
 		        		글목록으로</button>
 		        	<button type="reset"  class="mx-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">
 		        		원래대로</button>

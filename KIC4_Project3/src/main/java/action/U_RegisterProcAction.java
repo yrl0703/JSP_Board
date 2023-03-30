@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.RegisterDTO;
+import member.U_RegisterDTO;
 import member.ZipcodeDTO;
 
 public class U_RegisterProcAction implements CommandAction
@@ -20,14 +20,13 @@ public class U_RegisterProcAction implements CommandAction
 		   request.setCharacterEncoding("utf-8");
 		 
 		 //빈즈객체를 생성 ->확인용 
-	    RegisterDTO regDTO = new RegisterDTO();
+	    U_RegisterDTO regDTO = new U_RegisterDTO();
 	    System.out.println("regDTO="+regDTO);
 	    String mphone="";
 	    mphone = request.getParameter("number");
 	    mphone	+=request.getParameter("mphone");
 	    
 	    regDTO.setMemid(request.getParameter("memid"));
-	    regDTO.setGrade(request.getParameter("grade"));
 	    regDTO.setMemname(request.getParameter("memname"));
 	    regDTO.setBirthday(request.getParameter("birthday"));
 	    regDTO.setEmail(request.getParameter("email"));

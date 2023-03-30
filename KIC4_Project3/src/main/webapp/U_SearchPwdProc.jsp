@@ -10,7 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script language="JavaScript" src="script.js?ver=2.9"></script>
+  <script language="JavaScript" src="U_script.js?ver=2.9"></script>
 </head>
 <body>
   <section class="bg-[#F4F7FF] py-20">

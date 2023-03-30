@@ -26,13 +26,13 @@
 		  		<script>
 				alert("성공적으로 수정되었습니다!");
 				</script>
-			    <meta http-equiv="Refresh" content="0;url=/KIC4_Project3/Y_myPage.shop">
+			    <meta http-equiv="Refresh" content="0;url=./Y_myPage.shop">
 			</c:when>
 			<c:otherwise>
 				<script>
 				alert("수정도중 에러가 발생되었습니다!");
 				</script>
-				<meta http-equiv="Refresh" content="0;url=/KIC4_Project3/Y_myInfo.shop">
+				<meta http-equiv="Refresh" content="0;url=./Y_myInfo.shop">
 			</c:otherwise>
 		  	</c:choose>	
 		</center>

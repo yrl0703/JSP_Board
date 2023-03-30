@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${check==1}">
-	<meta http-equiv="Refresh" content="0;url=/KIC4_Project3/E_event.shop?pageNum=${pageNum}">
+	<meta http-equiv="Refresh" content="0;url=./E_event.shop?pageNum=${pageNum}">
 </c:if>
 <c:if test="${check==0}">
 	<script>

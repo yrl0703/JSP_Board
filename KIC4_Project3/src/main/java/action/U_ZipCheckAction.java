@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
+import member.U_MemberDAO;
 import member.ZipcodeDTO;
 
 public class U_ZipCheckAction implements CommandAction {
@@ -20,7 +20,7 @@ public class U_ZipCheckAction implements CommandAction {
 		String area3=request.getParameter("area3");
 		System.out.println("check => "+check+", area3 => "+area3);
 		//검색된 데이터를 화면에 출력
-		MemberDAO memDao = new MemberDAO();
+		U_MemberDAO memDao = new U_MemberDAO();
 		ArrayList<ZipcodeDTO> zipcodeList = memDao.zipcodeRead(area3);
 		
 		request.setAttribute("zipcodeList", zipcodeList);

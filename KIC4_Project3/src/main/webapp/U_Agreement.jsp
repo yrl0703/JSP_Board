@@ -10,7 +10,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
-<jsp:include page="top.jsp" flush="false"/>
 <body onLoad="regForm.memid.focus()">
 <body>
   <div class="mt-16 mb-6 text-center md:mb-10">

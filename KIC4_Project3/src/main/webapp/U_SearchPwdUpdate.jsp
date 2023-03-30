@@ -10,7 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script language="JavaScript" src="script.js?ver=2.9"></script>
+  <script language="JavaScript" src="U_script.js?ver=2.9"></script>
 </head>
 <body>
   <section class="bg-[#F4F7FF] py-20">
@@ -19,7 +19,7 @@
         <div class="w-full px-4">
           <div class="relative mx-auto py-auto max-w-2xl overflow-hidden rounded-lg bg-white py-40 px-60 text-center align-middle sm:px-12 md:px-[60px]">
 			<div class="text-center md:mb-4">
-	            <a href="javascript:void(0)"
+	            <a href="./M_mainpage.shop"
 	            	 class="mx-auto inline-block max-w-[160px] mr-44">
 	            	<img src="./img/logo2.png" class="h-auto max-w-xs"/>
 	            </a>
@@ -40,9 +40,8 @@
 				  </span>
 				  <input type="password" id="mem_passwd" name="pwd" maxlength="20" class="w-80 px-5 p-2.5 mr-3 block rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 text-sm border-gray-300" 
 				  		placeholder="새 비밀번호">
-				</div><br>
-				  <p class="hidden inline-flex text-justify text-sm mt-1 -mb-3 text-red-500" id="required_passwd">필수 정보입니다.</p>
-                  <p class="hidden inline-flex text-justify text-sm mt-1 -mb-3 text-red-500" id="con_passwd">비밀번호는 4자 이상 20자 이하로 적어야 합니다.</p>
+				</div>
+                  <p class="hidden inline-flex  text-justify text-sm mt-1 -mb-3 text-red-500" id="con_passwd">비밀번호는 4자 이상 20자 이하로 적어야 합니다.</p>
 				
 	            <!-- 새 비밀번호 재확인 -->
 				<div class="relative inline-flex mb-2 mt-3 text-center">
@@ -52,9 +51,8 @@
 				  <input type="password" id="mem_repasswd" name="repwd" maxlength="20" class="w-80 px-5 p-2.5 mr-3 block rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 text-sm border-gray-300" 
 				  		placeholder="새 비밀번호 확인">
 				</div><br>
-                  <p class="hidden inline-flex text-justify text-sm mt-1 -mb-3 text-red-500" id="required_repasswd">필수 정보입니다.</p>
-                  <p class="hidden inline-flex text-justify text-sm mt-1 -mb-3 text-red-500" id="ps_x">비밀번호가 일치하지 않습니다.</p>
-                  <p class="hidden inline-flex text-justify text-sm mt-1 -mb-3 text-green-600" id="ps_o">비밀번호가 일치합니다.</p>
+                  <p class="hidden inline-flex text-center text-justify text-sm mt-1 -mb-3 text-red-500" id="ps_x">비밀번호가 일치하지 않습니다.</p>
+                  <p class="hidden inline-flex text-center text-justify text-sm mt-1 -mb-3 text-green-600" id="ps_o">비밀번호가 일치합니다.</p>
 	            
                 <div class="max-w-lg mx-auto p-8 mt-10">
 				  <details class="open:bg-white dark:open:bg-slate-900 open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-6 rounded-lg" open>

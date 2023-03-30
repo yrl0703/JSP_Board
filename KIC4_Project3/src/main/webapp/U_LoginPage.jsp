@@ -9,10 +9,16 @@
   <title>로그인페이지</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-  <script language="JavaScript" src="script.js?ver=2.0"></script>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+  			integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script language="JavaScript" src="U_script.js?ver=2.5"></script>
+  <script>
+  	Kakao.init('4deaaac4b58a0dbc1faee057d88f0893'); // 사용하려는 앱의 JavaScript 키 입력
+  </script>
 </head>
 <body>
-<jsp:include page="top.jsp" flush="false" />
+<% session.invalidate();//세션종료 %>
 <!-- ====로그인 섹션(전체)==== -->
 <section class="bg-[#F4F7FF] py-20 my-auto">
   <div class="container mx-auto">
@@ -23,7 +29,7 @@
           <!-- ==로고(메인페이지 이동)== -->
           <div class="mb-10 text-center md:mb-16">
             <a 
-            href="javascript:void(0)" 
+            href="./M_mainpage.shop" 
             class="mx-auto inline-block max-w-[160px]">
               <img src="./img/logo.png"/>
             </a>
@@ -62,23 +68,14 @@
           </form>
 
           <!-- ==소셜로그인== -->
-          <ul class="-mx-2 mb-12">
+          <ul class="sns-login-box -mx-2 mb-12">
             <li class="w-full px-2 py-1 mb-4">
-              <a 
-              href="javascript:void(0)"
-              class="flex h-11 items-center hover:opacity-80">
-                <img src="./img/kakao_login.png"/>
-              </a>
+              <a id="kakao-login-btn" href="javascript:kakaoLogin();" class="flex h-11 items-center hover:opacity-80">
+				  <img src="./img/kakao_login.png"
+				    alt="카카오 로그인 버튼" />
+				</a>
             </li>
-            <li class="w-full px-2 py-1">
-              <a
-                href="javascript:void(0)"
-                class="flex h-11 items-center hover:opacity-90">
-              <img src="./img/naver_login.png"/>
-              </a>
-            </li>            
-          </ul>
-
+			
           <!-- ==아이디,비밀번호 찾기, 가입하기== -->
           <div>
             <a
@@ -106,7 +103,7 @@
     </div>
   </div>
 </section>
-<!-- ====로그인 섹션(전체)==== -->
+
 </body>
 <jsp:include page="footer.jsp" flush="false"/>
 </html>

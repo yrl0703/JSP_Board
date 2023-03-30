@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=utf-8"%>
 <%@page import="java.util.*,member.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="memDao" class="member.MemberDAO"/>
+<jsp:useBean id="memDao" class="member.U_MemberDAO"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,7 +9,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" src="script.js?ver=4.0"></script>
+<script language="JavaScript" src="U_script.js?ver=4.0"></script>
 </head>
 <body>
 	<div class="bg-blue-100 py-6 px-4">

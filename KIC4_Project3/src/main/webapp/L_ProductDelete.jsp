@@ -9,15 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <title>상품 삭제 페이지(관리자페이지)</title>
 </head>
 <body>
 		<jsp:include page="top.jsp" flush="false" />
-		<form method="post" name="ProductDelete" action="/KIC4_Project3/productDeletePro.shop">
-		<div class="relative max-w-screen-2xl px-4 py-0 mx-auto sm:px-6 sm:py-12 lg:pt-0 lg:pb-0 lg:px-40">
+		
+		<div class="relative max-w-screen-lg px-4 py-0 mx-auto sm:px-6 sm:py-12 lg:pt-0 lg:pb-0 lg:px-40">
 	    <div class="relative p-6 pb-20 bg-white">
     
         <center><h2 class="mt-6 text-xl font-large text-gray-900">삭제할 상품 정보를 확인해주세요.</h2></center>
+        <form method="post" name="ProductDelete" action="productDeletePro.shop">
 	    <div class="px-10 py-10">
 			<center>
 			<table class="border border-gray-300 border-separate rounded-[20px] overflow-hidden">
@@ -70,8 +72,8 @@
 				    <td class="px-6 py-6"><img width="400" src="${product.imgpath}.jpg"></td>
 				</tr>
 		</table>  
-		<div class="mx-60 mt-4">
-		<button type="button" onclick="location.href='/KIC4_Project3/product.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold text-sm hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent float-left rounded">
+		<div class="mt-4">
+		<button type="button" onclick="location.href='./product.shop'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold text-sm hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent float-left rounded">
 		        		글목록으로</button>
 		<button type="submit" onclick="alert('삭제되었습니다.')" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold text-sm hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">
 		        		삭제하기</button>&nbsp;

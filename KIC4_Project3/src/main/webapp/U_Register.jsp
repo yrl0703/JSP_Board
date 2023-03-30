@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="script.js?ver=2.4"></script>
+  <script src="U_script.js?ver=2.4"></script>
 </head>
 <body>
   <div class="mt-10 sm:mt-0">
@@ -23,7 +23,7 @@
 
       <div class="mt-5 md:col-span-2 md:mt-0">
         <!--회원가입 폼-->
-        <form name="regForm"  action="U_RegisterProc.shop" method="POST">
+        <form name="regForm" id="regForm" action="U_RegisterProc.shop" method="POST">
           <div class="overflow-hidden shadow sm:rounded-md">
             <div class="bg-white px-4 py-5 sm:p-6">
               <div class="grid grid-cols-6 gap-6">
@@ -35,7 +35,7 @@
                   <button type="button"class="max-h-0.5 max-w-xs mt-7 sm:mt-6 bg-blue-600 inline-flex items-center justify-center rounded-full py-4 px-10 text-center text-sm font-normal text-white hover:bg-opacity-90 px-8" 
                   onclick="idCheck(regForm.memid.value)">ID중복확인</button>
 
-                  <p class="hidden block col-span-6 text-justify text-sm mt-1 -mb-2 pb-1 text-red-500" id="mem_id_empty">아이디를 입력해야 합니다.</p>
+                  <p class="hidden block col-span-6 text-justify text-sm mt-1 -mb-2 pb-1 text-red-500" id="mem_id_empty">아이디는 4자 이상 영문 및 대소문자를 포함해야 합니다.</p>
                   <p class="hidden col-span-6 text-justify text-sm mt-1 -mb-3 text-red-500" id="required_id">필수 정보입니다.</p>
                 </div>
 
@@ -82,7 +82,7 @@
                 <!-- 생년월일 -->
                 <div class="col-span-6 sm:col-span-4">
                   <label for="mem_birthday" class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-gray-700 font-semibold">생년월일</label>
-                  <input type="date" name="birthday" id="mem_birthday" value="" max="2001-01-31"
+                  <input type="date" name="birthday" id="mem_birthday" value="연도-월-일" max="2001-01-31"
                   class="mt-1 block w-60 rounded-md border-gray-300 shadow-sm focus:border-blue-600 focus:ring-blue-600 sm:text-sm"
                   >
 
@@ -140,17 +140,16 @@
 
                   <p class="hidden col-span-6 text-justify text-sm mt-1 -mb-3 text-red-500" id="required_address">필수 정보입니다.</p>
                 </div>
-                <input type="hidden" name="grade" value="실버">
               </div>
             </div>
 
             <!-- 회원가입/가입취소 버튼 -->
             <div class="bg-gray-50 px-4 py-3 text-center sm:px-6">
-              <button type="button" class="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 my-2" 
-              onclick="inputCheck();lengthCheck();">
+              <button type="button" id="inputCheck" class="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-6 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 my-2" 
+              >
               회원가입</button>
-              <button type="button" class="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-6
-              ml-1 mr-1 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 my-2" onClick="location.href='./U_LoginPage.shop'">
+              <button type="button" onclick="document.location='./M_mainpage.shop'" class="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-6 
+              ml-1 mr-1 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 my-2">
               가입취소</button>
               <!-- 버튼 사용시 주의 - 리셋버튼이 아니라 새로고침 기능이 있는 버튼(에러메세지도 한꺼번에 지우기 위해서)-->
               <button type="button" class="inline-flex justify-center rounded-md border border-blue-700 bg-white py-2 px-6 text-sm font-medium text-blue-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 my-2"

@@ -3,7 +3,7 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
+import member.U_MemberDAO;
 
 public class U_IdCheckAction implements CommandAction {
 
@@ -15,7 +15,7 @@ public class U_IdCheckAction implements CommandAction {
 		   System.out.println("memid="+memid);
 		 
 		   //중복id체크 메서드 호출
-		   MemberDAO memDao = new MemberDAO();
+		   U_MemberDAO memDao = new U_MemberDAO();
 		   boolean check = memDao.checkId(memid);
 		
 		   request.setAttribute("memid", memid);

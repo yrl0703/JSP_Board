@@ -13,14 +13,14 @@
 				alert("비밀번호 변경을 완료했습니다.");
 			</script>
 		    <meta http-equiv="Refresh" 
-		             content="0;url=/KIC4_Project3/U_LoginPage.shop">
+		             content="0;url=./U_LoginPage.shop">
 		</c:when>
 		<c:otherwise>
 			<script>
 				alert("비밀번호 변경을 실패했습니다.\n 관리자에게 문의하세요:)");
 			</script>
 			<meta http-equiv="Refresh" 
-		             content="0;url=/KIC4_Project3/U_LoginPage.shop">
+		             content="0;url=./U_LoginPage.shop">
 		</c:otherwise>
 	  </c:choose>
 </body>

@@ -3,8 +3,8 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.MemberDAO;
-import member.RegisterDTO;
+import member.U_MemberDAO;
+import member.U_RegisterDTO;
 
 public class U_SearchPwdUpdateProcAction implements CommandAction {
 
@@ -14,7 +14,7 @@ public class U_SearchPwdUpdateProcAction implements CommandAction {
 		String memid=request.getParameter("memid");
 		String pwd=request.getParameter("pwd");
 		
-		MemberDAO memDao = new MemberDAO();
+		U_MemberDAO memDao = new U_MemberDAO();
 		boolean PwdUpCheck=memDao.pwdSearchUpdate(memid,pwd);
 		
 		request.setAttribute("PwdUpCheck", PwdUpCheck);

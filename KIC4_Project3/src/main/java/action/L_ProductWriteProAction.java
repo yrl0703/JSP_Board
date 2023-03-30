@@ -14,9 +14,11 @@ public class L_ProductWriteProAction implements CommandAction {
 		 request.setCharacterEncoding("UTF-8");
 	     ProductDTO pdto=new ProductDTO();
 	     
+	     String pcategory=request.getParameter("pcategory");
+	     
 	     pdto.setpID(Integer.parseInt(request.getParameter("pID")));
 	     pdto.setPname(request.getParameter("pname"));
-	     pdto.setAlcdegree(request.getParameter("alcdegree"));
+	     pdto.setAlcdegree(Integer.parseInt(request.getParameter("alcdegree")));
 	     pdto.setVolume(request.getParameter("volume"));
 	     pdto.setIngredient(request.getParameter("ingredient"));
 	     pdto.setPcompany(request.getParameter("pcompany"));
@@ -29,6 +31,8 @@ public class L_ProductWriteProAction implements CommandAction {
 	    
 	     ProductDAO pdao=new ProductDAO();
 	     pdao.productInsert(pdto);
+	     
+	     System.out.println(pcategory);
 		
 		return "/L_ProductWritePro.jsp";
 	}

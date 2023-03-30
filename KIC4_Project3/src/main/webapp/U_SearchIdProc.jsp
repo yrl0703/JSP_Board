@@ -12,7 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script language="JavaScript" src="script.js?ver=3.2"></script>
+  <script language="JavaScript" src="U_script.js?ver=3.2"></script>
 </head>
 <body>
   <section class="bg-[#F4F7FF] py-20">
@@ -42,7 +42,7 @@
 				    <c:if test="${!empty searchId}">
 				         <p class="relative block text-lg mb-10 text-gray-900">${memname} 회원 님의 ${email} 이메일<br>주소로 검색된 ID입니다.</p>
 						 <br>
-						  <jsp:useBean id="regDTO" class="member.RegisterDTO" />
+						  <jsp:useBean id="regDTO" class="member.U_RegisterDTO" />
 						  <c:forEach var="regDTO" items="${searchId}">
 							  <c:set var="sid" value="${regDTO.getMemid().trim()}"/>
 						  

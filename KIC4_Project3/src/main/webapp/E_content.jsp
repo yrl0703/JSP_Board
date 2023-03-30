@@ -44,12 +44,12 @@
 
       <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
         <br>
-			<button type="button" onclick="location.href='/KIC4_Project3/E_event.shop?pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-left">
+			<button type="button" onclick="location.href='./E_event.shop?pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-left">
         		글목록으로</button>
 		<c:if test="${checkManager==1}">
-        	<button type="button" onclick="location.href='/KIC4_Project3/E_deleteForm.shop?num=${article.eventno}&pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right mx-4">
+        	<button type="button" onclick="location.href='./E_deleteForm.shop?num=${article.eventno}&pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right mx-4">
         		글삭제</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        	<button type="button" onclick="location.href='/KIC4_Project3/E_updateForm.shop?num=${article.eventno}&pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">
+        	<button type="button" onclick="location.href='./E_updateForm.shop?num=${article.eventno}&pageNum=${pageNum}'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded float-right">
         		글수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
         </c:if>
         <br>
